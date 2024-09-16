@@ -14,8 +14,9 @@ const processRequest = (req, res)=>{
     res.end('Hola Mundo')
   } 
   else if (req.url === '/gato'){
-    res.setHeader('Content-Type', 'image/png; charset=utf-8')
-    fs.readFile('./gato.png', (err, data) => {
+    const imgPath = path.join(__dirname, 'public', 'gato.png')
+    //res.setHeader('Content-Type', 'image/png; charset=utf-8')
+    fs.readFile(imgPath, (err, data) => {
       if (err) {
         res.statusCode = 500
         res.end('<h1>500 Internal Serever Error</h1>')
